@@ -1,6 +1,6 @@
 import os
 names = []
-main = "os"
+main = "os.com"
 while True:
 	try:
 		name = input()
@@ -9,8 +9,6 @@ while True:
 	except Exception:
 		break
 
-
-names = names[::-1]
 
 fs = [len(names)]
 for x in names:
@@ -23,7 +21,7 @@ fs = bytes(fs+[0]*512)[:512]
 
 for name in names:
 	with open("bin/"+name, 'rb') as f:
-		result += f.read() + (fs if name == main else b'')
+		result += (f.read() + (fs if name == main else b'') + b'\x00'*2048)[:2048]
 
 result += b'\x00' * (2048 * (720-len(names)))
 

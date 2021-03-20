@@ -14,6 +14,8 @@ ldn:
 	mov ax, 0x2010
 	mov ds, ax
 	mov ss, ax
+	push 0xb817
+	pop es
 	mov dword [ds:0], 7c00eah
 	mov byte [ds:4], 0
 	jmp 0x2010:100h

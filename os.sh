@@ -3,6 +3,6 @@ mkdir bin 2>/dev/null
 
 for f in `ls progs`; do
 	echo $f
-	fasm progs/$f/$f.asm bin/$f 2> /dev/null
+	fasm progs/$f/$f.asm bin/$f.com
 done
 python3 os.py <<< `ls bin`

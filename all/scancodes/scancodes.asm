@@ -2,6 +2,7 @@ org 100h
 
 xor ax, ax
 int 10h
+
 push 0xb800
 pop es
 
@@ -26,30 +27,19 @@ main:
 	and dh, 15
 	call fix_hex
 	mov [es:16], dh
+	
+	mov dh, al
+	shr dh, 4
+	call fix_hex
+	mov [es:32], dh
+
+	mov dh, al
+	and dh, 15
+	call fix_hex
+	mov [es:34], dh
+
 	jmp main
 
-
-fix_hex:
-	cmp dh, 10
-	jl exit_fix
-	add dh, 7
-exit_fix:
-	add dh, 48
-	ret
-
-text:
-db 'symbol scancode', 0
-
-print:
-	mov al, [ds:si]
-	cmp al, 0
-	jz ext
-	mov [es:di], al
-	inc di
-	inc di
-	inc si
-	jmp print
-ext:
-	ret
+include 'f.asm'
 
 times 2048-($-100h) db 0
