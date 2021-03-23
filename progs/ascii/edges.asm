@@ -1,7 +1,8 @@
 mov cl, 9
+mov si, syms
 
 edges:
 	pop di
-	mov al, [syms-1+ecx]
+	lodsb
 	stosw
 	loop edges

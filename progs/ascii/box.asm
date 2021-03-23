@@ -9,8 +9,8 @@ draw:
 	mov al, bl
 	mov cl, bh
 lp:
-	stosd
-	add di, [steps+edx*2]
-	loop lp
+		stosd
+		add di, [steps+edx*2]
+		loop lp
 	pop cx
 	loop draw

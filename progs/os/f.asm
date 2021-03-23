@@ -18,6 +18,7 @@ ldn:
 	pop es
 	mov dword [ds:0], 7c00eah
 	mov byte [ds:4], 0
+	xor ax, ax
 	jmp 0x2010:100h
 
 print:

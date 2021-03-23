@@ -13,6 +13,9 @@ pop es
 xor bx, bx
 mov cx, bx
 
+push 0
+popf
+
 mov ax, 2
 int 10h
 

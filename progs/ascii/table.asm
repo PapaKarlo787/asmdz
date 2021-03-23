@@ -1,7 +1,7 @@
 mov di, 488
 
 new:
-	mov cl,10h
+	mov cl, 16
 	slp:
 		stosd
 		inc ax

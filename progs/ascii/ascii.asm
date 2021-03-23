@@ -1,9 +1,7 @@
-use16
 org 100h
 
-mov ax, 3
+mov al, 3
 int 10h
-
 push 0xb817
 pop es
 
@@ -15,7 +13,7 @@ include 'edges.asm'
 include 'hex.asm'
 
 mov sp, 0xfffe
-mov ah,0
+xor ax, ax
 int 16h
 ret
 
