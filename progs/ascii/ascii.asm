@@ -1,20 +1,50 @@
+include 'macros.asm'
 org 100h
+    mov al, 03h
+    int 10h
+    push 0b817h
+    pop es
+    xor di, di
+    mov eax, 0x1a001a00
 
-mov al, 3
-int 10h
-push 0xb817
-pop es
+	mov si, syms
+	call tb
+    stosd
+    lodsb
+    stosd
 
-mov eax, 0x1a001a00
-
-include 'table.asm'
-include 'box.asm'
-include 'edges.asm'
 include 'hex.asm'
 
-mov sp, 0xfffe
-xor ax, ax
-int 16h
-ret
+    lodsb
+    call el
+	call tb
+
+nl:
+    stosw
+    mov al, bl
+    shr al, 4
+    al_to_hex
+    stosw
+    mov al, 0b3h
+    stosd
+    mov cl, 16
+    
+    table:
+		mov al, bl
+		stosd
+		inc bx
+		loop table
+    
+    mov al, 0bah
+    call el
+    test bh, bh
+    jz nl
+
+	call tb
+
+    xor ah, ah
+    int 16h
+    ret
 
 include 'data.asm'
+include 'top.asm'
