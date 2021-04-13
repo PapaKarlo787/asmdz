@@ -1,9 +1,7 @@
 include 'macros.asm'
-
 org 100h
     mov al, 3
     int 10h
-include 'new_tab.asm'
     push 0xb817
     pop es
     stosw
@@ -49,4 +47,3 @@ nl:
 
 include 'data.asm'
 include 'top.asm'
-include 'tab.asm'
