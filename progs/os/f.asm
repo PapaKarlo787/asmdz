@@ -19,6 +19,7 @@ ldn:
 	mov dword [ds:0], 7c00eah
 	mov byte [ds:4], 0
 	xor ax, ax
+	mov di, 0xfffe
 	jmp 0x2010:100h
 
 print:

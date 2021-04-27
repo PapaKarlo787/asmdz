@@ -17,7 +17,7 @@ int 10h
 mov dx, 0x1900
 mov ah, 2
 int 10h
-push 0b83eh
+push 0b800h
 pop es
 
 lp:
@@ -29,11 +29,17 @@ lp:
     mov byte [ncmd], 0
     jmp lp
 
+sup:
+	inc byte[speed]
+	ret
 
+sdown:
+	dec byte[speed]
+	ret
 
 ncmd: db 0
 
-cmds: dw nonecmd, spin, return
+cmds: dw nonecmd, spin, return, sup, sdown
 
 include 'handlers.asm'
 include 'funcs.asm'
