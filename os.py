@@ -21,9 +21,9 @@ fs = bytes(fs+[0]*512)[:512]
 
 for name in names:
 	with open("bin/"+name, 'rb') as f:
-		result += (f.read() + (fs if name == main else b'') + b'\x00'*2048)[:2048]
+		result += (f.read() + (fs if name == main else b'') + b'\x00'*8192)[:8192]
 
-result += b'\x00' * (2048 * (720-len(names)))
+result += b'\x00' * (8192 * (180-len(names)))
 
 with open("res.img", 'wb') as f:
 	f.write(result)

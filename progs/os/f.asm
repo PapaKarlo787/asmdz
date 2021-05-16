@@ -1,7 +1,7 @@
 ldn:
 	xor dx, dx
 	mov ax, bx
-	mov cl, 4
+	mov cl, 16
 	mul cl
 	mov cx, ax
 	push 0x2000
@@ -9,7 +9,7 @@ ldn:
 	mov bx, 00h
 	mov sp, 0
 	push sp
-	mov ax, 0204h
+	mov ax, 0210h
 	int 13h
 	mov ax, 0x2010
 	mov ds, ax
