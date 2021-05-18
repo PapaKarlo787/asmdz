@@ -15,8 +15,10 @@ l:
 	jne .nxt1
 .ad:
 	add di, 78
+	jmp .nxt2
 .nxt1:
 	call check_zabor
+.nxt2:
 	mov [position], di
 	mov ax, [face]
 	add ax, 2
@@ -36,8 +38,10 @@ r:
 	call div_160
 	jne .nxt1
 	sub di, 78
+	jmp .nxt2
 .nxt1:
 	call check_zabor
+.nxt2:
 	mov [position], di
 	mov ax, [face]
 	add ax, 2
@@ -57,7 +61,10 @@ u:
 	cmp di, 0
 	jnl .nxt1
 	add di, 2000-160
+	jmp .nxt2
 .nxt1:
+	call check_zabor
+.nxt2:
 	call check_zabor
 	mov [position], di
 	mov ax, [face]
@@ -78,8 +85,10 @@ d:
 	cmp di, 2000-160
 	jnae .nxt1
 	sub di, 2000-160
+	jmp .nxt2
 .nxt1:
 	call check_zabor
+.nxt2:
 	mov [position], di
 	mov ax, [face]
 	add ax, 2

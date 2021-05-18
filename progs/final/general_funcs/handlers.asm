@@ -76,7 +76,7 @@ grizi_grunt:
 	and al, 0xf0
 	add al, 0x4
 	mov [face+1], al
-	jmp .rt
+	ret
 .nxt:
 	and byte [face+1], 0x0f
 	or byte [face+1], 0x20
@@ -88,10 +88,7 @@ grizi_grunt:
 	and al, 0xf0
 	add al, 0xe
 	mov [face+1], al
-.rt:
-	mov di, [position]
-	mov ax, [face]
-	call mov_rotate
+
 	ret
 
 by_steps:

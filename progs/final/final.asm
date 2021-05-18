@@ -1,10 +1,12 @@
 org 100h
 call init
-call create_info
 call _info
 
 main:
 call update_positions
+	mov di, [position]
+	mov ax, [face]
+	call mov_rotate
 call print_points
 call keyhandler
 cmp word [speed1], 0xffff

@@ -20,9 +20,20 @@ init:
 	mov ax, 0x2e00
 	mov cx, 920
 	rep stosw
+	mov ax, 0x2efe
+	mov cx, 20
+	mov di, 40
+	rep stosw
+	mov cx, 11
+	mov di, 12*80
+.lp:
+	stosw
+	add di, 78
+	loop .lp
 	call .print_info
 	mov byte[es:1996], 0xf9
 	mov byte[es:1916], '2'
+	call create_info
 	ret
 
 .print_info:
